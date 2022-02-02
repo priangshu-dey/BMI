@@ -44,13 +44,13 @@ class _HomeScreenState extends State<HomeScreen> {
               children: [
                 Container(
                   color: Colors.amber[50]!.withOpacity(.1),
-                  width: 400,
+                  width: 200,
                   //height: 150,
                   child: TextField(
                     textAlign: TextAlign.center,
                     controller: _heightController,
                     style: TextStyle(
-                        fontSize: 32,
+                        fontSize: 22,
                         fontWeight: FontWeight.w300,
                         color: accentHexColor),
                     keyboardType: TextInputType.number,
@@ -60,7 +60,7 @@ class _HomeScreenState extends State<HomeScreen> {
                       ),
                       hintText: "Height in meter",
                       hintStyle: TextStyle(
-                        fontSize: 32,
+                        fontSize: 22,
                         //fontWeight: FontWeight.w300,
                         color: Colors.white.withOpacity(1.0),
                       ),
@@ -69,12 +69,12 @@ class _HomeScreenState extends State<HomeScreen> {
                 ),
                 Container(
                   color: Colors.amber[50]!.withOpacity(.1),
-                  width: 400,
+                  width: 200,
                   child: TextField(
                     textAlign: TextAlign.center,
                     controller: _weightController,
                     style: TextStyle(
-                        fontSize: 32,
+                        fontSize: 22,
                         fontWeight: FontWeight.w300,
                         color: accentHexColor),
                     keyboardType: TextInputType.number,
@@ -84,7 +84,7 @@ class _HomeScreenState extends State<HomeScreen> {
                       ),
                       hintText: "Weight in Kg",
                       hintStyle: TextStyle(
-                        fontSize: 32,
+                        fontSize: 22,
                         //fontWeight: FontWeight.w300,
                         color: Colors.white.withOpacity(.8),
                       ),
