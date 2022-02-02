@@ -42,51 +42,56 @@ class _HomeScreenState extends State<HomeScreen> {
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceEvenly,
               children: [
-                Container(
-                  color: Colors.amber[50]!.withOpacity(.1),
-                  width: 400,
-                  //height: 150,
-                  child: TextField(
-                    textAlign: TextAlign.center,
-                    controller: _heightController,
-                    style: TextStyle(
-                        fontSize: 32,
-                        fontWeight: FontWeight.w300,
-                        color: accentHexColor),
-                    keyboardType: TextInputType.number,
-                    decoration: InputDecoration(
-                      border: OutlineInputBorder(
-                        borderRadius: BorderRadius.circular(20.0),
-                      ),
-                      hintText: "Height in meter",
-                      hintStyle: TextStyle(
-                        fontSize: 32,
-                        //fontWeight: FontWeight.w300,
-                        color: Colors.white.withOpacity(1.0),
+                Flexible(
+                  child: Container(
+                    //color: Colors.amber[50]!.withOpacity(.1),
+                    width: 400,
+                    //height: 150,
+
+                    child: TextField(
+                      textAlign: TextAlign.center,
+                      controller: _heightController,
+                      style: TextStyle(
+                          fontSize: 32,
+                          fontWeight: FontWeight.w300,
+                          color: accentHexColor),
+                      keyboardType: TextInputType.number,
+                      decoration: InputDecoration(
+                        border: OutlineInputBorder(
+                          borderRadius: BorderRadius.circular(20.0),
+                        ),
+                        hintText: "Height in meter",
+                        hintStyle: TextStyle(
+                          fontSize: 32,
+                          //fontWeight: FontWeight.w300,
+                          color: Colors.white.withOpacity(1.0),
+                        ),
                       ),
                     ),
                   ),
                 ),
-                Container(
-                  color: Colors.amber[50]!.withOpacity(.1),
-                  width: 400,
-                  child: TextField(
-                    textAlign: TextAlign.center,
-                    controller: _weightController,
-                    style: TextStyle(
-                        fontSize: 32,
-                        fontWeight: FontWeight.w300,
-                        color: accentHexColor),
-                    keyboardType: TextInputType.number,
-                    decoration: InputDecoration(
-                      border: OutlineInputBorder(
-                        borderRadius: BorderRadius.circular(20.0),
-                      ),
-                      hintText: "Weight in Kg",
-                      hintStyle: TextStyle(
-                        fontSize: 32,
-                        //fontWeight: FontWeight.w300,
-                        color: Colors.white.withOpacity(.8),
+                Flexible(
+                  child: Container(
+                    //color: Colors.amber[50]!.withOpacity(.1),
+                    width: 400,
+                    child: TextField(
+                      textAlign: TextAlign.center,
+                      controller: _weightController,
+                      style: TextStyle(
+                          fontSize: 32,
+                          fontWeight: FontWeight.w300,
+                          color: accentHexColor),
+                      keyboardType: TextInputType.number,
+                      decoration: InputDecoration(
+                        border: OutlineInputBorder(
+                          borderRadius: BorderRadius.circular(20.0),
+                        ),
+                        hintText: "Weight in Kg",
+                        hintStyle: TextStyle(
+                          fontSize: 32,
+                          //fontWeight: FontWeight.w300,
+                          color: Colors.white.withOpacity(.8),
+                        ),
                       ),
                     ),
                   ),
