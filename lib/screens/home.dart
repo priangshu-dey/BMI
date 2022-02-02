@@ -12,6 +12,7 @@ class HomeScreen extends StatefulWidget {
 }
 
 class _HomeScreenState extends State<HomeScreen> {
+  final _formKey = GlobalKey<FormState>();
   TextEditingController _heightController = TextEditingController();
   TextEditingController _weightController = TextEditingController();
   double bmiResult = 0;
@@ -39,64 +40,79 @@ class _HomeScreenState extends State<HomeScreen> {
             SizedBox(
               height: 20,
             ),
-            Row(
-              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-              children: [
-                Flexible(
-                  child: Container(
-                    //color: Colors.amber[50]!.withOpacity(.1),
-                    width: 400,
-                    //height: 150,
+            Form(
+              key: _formKey,
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                children: [
+                  Flexible(
+                    child: Container(
+                      //color: Colors.amber[100]!.withOpacity(.1),
+                      //width: 400,
+                      //height: 150,
 
-                    child: TextField(
-                      textAlign: TextAlign.center,
-                      controller: _heightController,
-                      style: TextStyle(
-                          fontSize: 32,
-                          fontWeight: FontWeight.w300,
-                          color: accentHexColor),
-                      keyboardType: TextInputType.number,
-                      decoration: InputDecoration(
-                        border: OutlineInputBorder(
-                          borderRadius: BorderRadius.circular(20.0),
+                      child: TextFormField(
+                        textAlign: TextAlign.center,
+                        controller: _heightController,
+                        style: TextStyle(
+                            //fontSize: 32,
+                            fontWeight: FontWeight.w300,
+                            color: accentHexColor),
+                        keyboardType: TextInputType.number,
+                        decoration: InputDecoration(
+                          border: OutlineInputBorder(
+                            borderRadius: BorderRadius.circular(20.0),
+                          ),
+                          hintText: "Height in meter",
+                          hintStyle: TextStyle(
+                            fontSize: 32,
+                            //fontWeight: FontWeight.w300,
+                            color: Colors.white.withOpacity(1.0),
+                          ),
                         ),
-                        hintText: "Height in meter",
-                        hintStyle: TextStyle(
-                          fontSize: 32,
-                          //fontWeight: FontWeight.w300,
-                          color: Colors.white.withOpacity(1.0),
-                        ),
+                        validator: (value) {
+                          if (value == null || value.isEmpty) {
+                            return 'Please enter some text';
+                          }
+                          return null;
+                        },
                       ),
                     ),
                   ),
-                ),
-                Flexible(
-                  child: Container(
-                    //color: Colors.amber[50]!.withOpacity(.1),
-                    width: 400,
-                    child: TextField(
-                      textAlign: TextAlign.center,
-                      controller: _weightController,
-                      style: TextStyle(
-                          fontSize: 32,
-                          fontWeight: FontWeight.w300,
-                          color: accentHexColor),
-                      keyboardType: TextInputType.number,
-                      decoration: InputDecoration(
-                        border: OutlineInputBorder(
-                          borderRadius: BorderRadius.circular(20.0),
+                  Flexible(
+                    child: Container(
+                      //color: Colors.amber[50]!.withOpacity(.1),
+                      //width: 400,
+                      child: TextFormField(
+                        textAlign: TextAlign.center,
+                        controller: _weightController,
+                        style: TextStyle(
+                            fontSize: 32,
+                            fontWeight: FontWeight.w300,
+                            color: accentHexColor),
+                        keyboardType: TextInputType.number,
+                        decoration: InputDecoration(
+                          border: OutlineInputBorder(
+                            borderRadius: BorderRadius.circular(20.0),
+                          ),
+                          hintText: "Weight in Kg",
+                          hintStyle: TextStyle(
+                            fontSize: 32,
+                            //fontWeight: FontWeight.w300,
+                            color: Colors.white.withOpacity(.8),
+                          ),
                         ),
-                        hintText: "Weight in Kg",
-                        hintStyle: TextStyle(
-                          fontSize: 32,
-                          //fontWeight: FontWeight.w300,
-                          color: Colors.white.withOpacity(.8),
-                        ),
+                        validator: (value) {
+                          if (value == null || value.isEmpty) {
+                            return 'Please enter some text';
+                          }
+                          return null;
+                        },
                       ),
                     ),
                   ),
-                ),
-              ],
+                ],
+              ),
             ),
             SizedBox(
               height: 80,
@@ -108,18 +124,20 @@ class _HomeScreenState extends State<HomeScreen> {
                 backgroundColor: accentHexColor,
               ),
               onPressed: () {
-                double _h = double.parse(_heightController.text);
-                double _w = double.parse(_weightController.text);
-                setState(() {
-                  bmiResult = _w / (_h * _h);
-                  if (bmiResult > 25) {
-                    _textResult = "You\'re over weight";
-                  } else if (bmiResult >= 18.5 && bmiResult <= 25) {
-                    _textResult = "You have a normal weight";
-                  } else {
-                    _textResult = "You\'re under weight";
-                  }
-                });
+                if (_formKey.currentState!.validate()) {
+                  double _h = double.parse(_heightController.text);
+                  double _w = double.parse(_weightController.text);
+                  setState(() {
+                    bmiResult = _w / (_h * _h);
+                    if (bmiResult > 25) {
+                      _textResult = "You\'re over weight";
+                    } else if (bmiResult >= 18.5 && bmiResult <= 25) {
+                      _textResult = "You have a normal weight";
+                    } else {
+                      _textResult = "You\'re under weight";
+                    }
+                  });
+                }
               },
               child: Text(
                 "Calculate",
